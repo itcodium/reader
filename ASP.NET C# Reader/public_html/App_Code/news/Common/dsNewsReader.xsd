@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsNewsReader" targetNamespace="http://tempuri.org/dsNewsReader.xsd" xmlns:mstns="http://tempuri.org/dsNewsReader.xsd" xmlns="http://tempuri.org/dsNewsReader.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="cnnDatabase" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="cnnDatabase (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.cnnDatabase.ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="NewsReaderConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="NewsReaderConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.NewsReaderConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsNewsReader" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsNewsReader" msprop:Generator_DataSetName="dsNewsReader">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Usuarios" msprop:Generator_UserTableName="Usuarios" msprop:Generator_RowDeletedName="UsuariosRowDeleted" msprop:Generator_TableClassName="UsuariosDataTable" msprop:Generator_RowChangedName="UsuariosRowChanged" msprop:Generator_RowDeletingName="UsuariosRowDeleting" msprop:Generator_RowChangingName="UsuariosRowChanging" msprop:Generator_RowEvArgName="UsuariosRowChangeEvent" msprop:Generator_RowClassName="UsuariosRow" msprop:Generator_RowEvHandlerName="UsuariosRowChangeEventHandler" msprop:Generator_TablePropName="Usuarios" msprop:Generator_TableVarName="tableUsuarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdData" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="IdData" msprop:Generator_ColumnPropNameInRow="IdData" msprop:Generator_ColumnVarNameInTable="columnIdData" msprop:Generator_ColumnPropNameInTable="IdDataColumn" type="xs:int" />
+              <xs:element name="Nombre" msprop:Generator_UserColumnName="Nombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInTable="NombreColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_UserColumnName="Email" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInTable="EmailColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NewsPaper" msprop:Generator_UserTableName="NewsPaper" msprop:Generator_RowDeletedName="NewsPaperRowDeleted" msprop:Generator_TableClassName="NewsPaperDataTable" msprop:Generator_RowChangedName="NewsPaperRowChanged" msprop:Generator_RowDeletingName="NewsPaperRowDeleting" msprop:Generator_RowChangingName="NewsPaperRowChanging" msprop:Generator_RowEvArgName="NewsPaperRowChangeEvent" msprop:Generator_RowClassName="NewsPaperRow" msprop:Generator_RowEvHandlerName="NewsPaperRowChangeEventHandler" msprop:Generator_TablePropName="NewsPaper" msprop:Generator_TableVarName="tableNewsPaper">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdNewsPaper" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="IdNewsPaper" msprop:Generator_ColumnPropNameInRow="IdNewsPaper" msprop:Generator_ColumnVarNameInTable="columnIdNewsPaper" msprop:Generator_ColumnPropNameInTable="IdNewsPaperColumn" type="xs:int" />
+              <xs:element name="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre" msprop:Generator_UserColumnName="Nombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInTable="NombreColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="News" msprop:Generator_UserTableName="News" msprop:Generator_RowDeletedName="NewsRowDeleted" msprop:Generator_TableClassName="NewsDataTable" msprop:Generator_RowChangedName="NewsRowChanged" msprop:Generator_RowDeletingName="NewsRowDeleting" msprop:Generator_RowChangingName="NewsRowChanging" msprop:Generator_RowEvArgName="NewsRowChangeEvent" msprop:Generator_RowClassName="NewsRow" msprop:Generator_RowEvHandlerName="NewsRowChangeEventHandler" msprop:Generator_TablePropName="News" msprop:Generator_TableVarName="tableNews">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdNew" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="IdNew" msprop:Generator_ColumnPropNameInRow="IdNew" msprop:Generator_ColumnVarNameInTable="columnIdNew" msprop:Generator_ColumnPropNameInTable="IdNewColumn" type="xs:int" />
+              <xs:element name="IdNewsPaper" msprop:Generator_UserColumnName="IdNewsPaper" msprop:Generator_ColumnPropNameInRow="IdNewsPaper" msprop:Generator_ColumnVarNameInTable="columnIdNewsPaper" msprop:Generator_ColumnPropNameInTable="IdNewsPaperColumn" type="xs:int" />
+              <xs:element name="IdChannel" msprop:Generator_UserColumnName="IdChannel" msprop:Generator_ColumnPropNameInRow="IdChannel" msprop:Generator_ColumnVarNameInTable="columnIdChannel" msprop:Generator_ColumnPropNameInTable="IdChannelColumn" type="xs:int" />
+              <xs:element name="Title" msprop:Generator_UserColumnName="Title" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInTable="TitleColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_UserColumnName="Description" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PublishDate" msprop:Generator_UserColumnName="PublishDate" msprop:Generator_ColumnPropNameInRow="PublishDate" msprop:Generator_ColumnVarNameInTable="columnPublishDate" msprop:Generator_ColumnPropNameInTable="PublishDateColumn" type="xs:dateTime" />
+              <xs:element name="Link" msprop:Generator_UserColumnName="Link" msprop:Generator_ColumnPropNameInRow="Link" msprop:Generator_ColumnVarNameInTable="columnLink" msprop:Generator_ColumnPropNameInTable="LinkColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Author" msprop:Generator_UserColumnName="Author" msprop:Generator_ColumnPropNameInRow="Author" msprop:Generator_ColumnVarNameInTable="columnAuthor" msprop:Generator_ColumnPropNameInTable="AuthorColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Created" msprop:Generator_UserColumnName="Created" msprop:Generator_ColumnPropNameInRow="Created" msprop:Generator_ColumnVarNameInTable="columnCreated" msprop:Generator_ColumnPropNameInTable="CreatedColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NewsLog" msprop:Generator_UserTableName="NewsLog" msprop:Generator_RowDeletedName="NewsLogRowDeleted" msprop:Generator_TableClassName="NewsLogDataTable" msprop:Generator_RowChangedName="NewsLogRowChanged" msprop:Generator_RowDeletingName="NewsLogRowDeleting" msprop:Generator_RowChangingName="NewsLogRowChanging" msprop:Generator_RowEvArgName="NewsLogRowChangeEvent" msprop:Generator_RowClassName="NewsLogRow" msprop:Generator_RowEvHandlerName="NewsLogRowChangeEventHandler" msprop:Generator_TablePropName="NewsLog" msprop:Generator_TableVarName="tableNewsLog">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdNewsLog" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="IdNewsLog" msprop:Generator_ColumnPropNameInRow="IdNewsLog" msprop:Generator_ColumnVarNameInTable="columnIdNewsLog" msprop:Generator_ColumnPropNameInTable="IdNewsLogColumn" type="xs:int" />
+              <xs:element name="IdNewsPaper" msprop:Generator_UserColumnName="IdNewsPaper" msprop:Generator_ColumnPropNameInRow="IdNewsPaper" msprop:Generator_ColumnVarNameInTable="columnIdNewsPaper" msprop:Generator_ColumnPropNameInTable="IdNewsPaperColumn" type="xs:int" />
+              <xs:element name="IdChannel" msprop:Generator_UserColumnName="IdChannel" msprop:Generator_ColumnPropNameInRow="IdChannel" msprop:Generator_ColumnVarNameInTable="columnIdChannel" msprop:Generator_ColumnPropNameInTable="IdChannelColumn" type="xs:int" />
+              <xs:element name="Description" msprop:Generator_UserColumnName="Description" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInTable="DescriptionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListType" msprop:Generator_UserTableName="ListType" msprop:Generator_RowDeletedName="ListTypeRowDeleted" msprop:Generator_TableClassName="ListTypeDataTable" msprop:Generator_RowChangedName="ListTypeRowChanged" msprop:Generator_RowDeletingName="ListTypeRowDeleting" msprop:Generator_RowChangingName="ListTypeRowChanging" msprop:Generator_RowEvArgName="ListTypeRowChangeEvent" msprop:Generator_RowClassName="ListTypeRow" msprop:Generator_RowEvHandlerName="ListTypeRowChangeEventHandler" msprop:Generator_TablePropName="ListType" msprop:Generator_TableVarName="tableListType">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="schema" msprop:Generator_UserColumnName="schema" msprop:Generator_ColumnPropNameInRow="schema" msprop:Generator_ColumnVarNameInTable="columnschema" msprop:Generator_ColumnPropNameInTable="schemaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="table" msprop:Generator_UserColumnName="table" msprop:Generator_ColumnPropNameInRow="table" msprop:Generator_ColumnVarNameInTable="columntable" msprop:Generator_ColumnPropNameInTable="tableColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="pk" msprop:Generator_UserColumnName="pk" msprop:Generator_ColumnPropNameInRow="pk" msprop:Generator_ColumnVarNameInTable="columnpk" msprop:Generator_ColumnPropNameInTable="pkColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="type" msprop:Generator_UserColumnName="type" msprop:Generator_ColumnPropNameInRow="type" msprop:Generator_ColumnVarNameInTable="columntype" msprop:Generator_ColumnPropNameInTable="typeColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:NewsPaper" />
+      <xs:field xpath="mstns:IdNewsPaper" />
+    </xs:unique>
+    <xs:unique name="News_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:News" />
+      <xs:field xpath="mstns:IdNew" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+ <meta charset="UTF-8">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+ 	
+    <script src="../js/jquery-1.11.2.min.js" type="text/javascript"></script>
+	  <style>
+    	html{	
+		}
+
+		body{
+			font-family: Arial;
+			font-size: 0.72em;
+			user-select:none;
+			background-color:#fafafa;
+		}
+		html,body,ul,li,p{
+			  padding:0;
+			margin:0;
+		}
+		  
+		div{
+			background-color:#eee;
+			padding:10px;
+			margin-bottom:2px;
+		}
+		
+		 
+		a
+		{
+			background-color:#555;
+			color:#eee;
+			margin:5px;
+			text-decoration:none;
+            padding:4px;			
+			
+			}
+    </style>	
+    
+        <script type="text/javascript">
+            $(document).ready(function() {
+            $('#loading img').each(function() {
+                $(this).attr('src', $(this).data('url'));
+            });
+            
+            });
+        </script>
+</head>
+ <body>
+     
+     <div id="loading" class="pageOverContent">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif"  data-url="http://farm8.staticflickr.com/7539/15367793473_cfaa19d871_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm9.staticflickr.com/8617/15367794313_6ef19013d0_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm8.staticflickr.com/7516/15800023268_bf2ed8b315_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm8.staticflickr.com/7527/15800148350_f65f5f5e5f_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm8.staticflickr.com/7573/15800148800_f7e8c27b48_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm8.staticflickr.com/7542/15800148810_b641f199a3_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm9.staticflickr.com/8617/15800148920_03a9be2b91_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm9.staticflickr.com/8608/15801413199_58f6c7e5cd_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm8.staticflickr.com/7539/15801413309_aa79eff4de_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm9.staticflickr.com/8588/15801413479_bd7ec1c155_m.jpg">
+        <img src="../templates/assets/images/icons/ajax-loader-transparent.gif" data-url="http://farm8.staticflickr.com/7462/15801685347_7d9e3272d2_m.jpg">
+    </div>
+ </body>
+</html>

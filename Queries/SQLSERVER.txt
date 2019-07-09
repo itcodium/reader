@@ -1,0 +1,11 @@
+select top 10 a.IdNew [source_id],b.Nombre [source_category],c.Description [source_category_sub],a.Title,a.Description,a.PublishDate,a.Link,a.Author,a.Created 
+--          source_id, source_category, source_category_sub, source_field_name, source_date, texto, fecha_proceso, fecha_creacion, creado_por
+from [dbo].[News] a 
+inner join NewsPaper b
+on a.IdNewsPaper=b.IdNewsPaper
+inner join Channel c on 
+	a.IdNewsPaper=c.IdNewsPaper and c.IdChannel=a.IdChannel
+
+select * from [dbo].[Channel]
+select * from [dbo].[News]
+

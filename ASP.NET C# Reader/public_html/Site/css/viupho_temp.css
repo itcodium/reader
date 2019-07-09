@@ -1,0 +1,387 @@
+
+/* http://brankic1979.com/icons */
+* {margin: 0; padding: 0;}
+
+html{	
+	padding:0;
+	margin:0;
+}
+
+body{
+	padding:0;
+	margin:0;
+	font-family: tahoma;
+	font-size: 16px;
+	background-color: #ccc;
+	-webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+}
+
+#scroller {
+	z-index:1;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	padding:0;
+}
+
+
+.loadingSpin{
+	background: url("../assets/images/ajax-loader2.gif")  no-repeat center;
+}
+ 
+		
+		
+/*
+  
+.closeBox{
+	background-image: url("../assets/images/icons/close.png");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+}
+ 
+.item{
+	color:#000;
+}
+ */
+.home{
+	background-image: url("../assets/images/icons/home.png");
+    background-size: 32px 32px;
+}
+.table{
+	background-image: url("../images/table.png");
+    background-size: 32px 32px;
+}
+
+ 
+/* ********************** */
+ 
+
+/* ---------------------------------------------- */
+/*
+.line, .lineTransparent{
+	text-align:left;
+    margin-bottom: 2px;
+    margin-top: 1px;
+	font-size:0.7em;
+	color:#444;
+	font-family:Arial;
+    vertical-align: top;
+    width: 100%;
+    line-height: 20px;
+}
+.lineTransparent {
+    background-color: transparent;
+}
+
+*/
+/*
+.button,.bigButton,.bigButtonGreen, .bigButtonDisabled, .bigButtonGray,.upload{
+	
+	background-color: #444;
+	font-family:arial;
+	font-weight:bold;
+	line-height:44px;
+	border:0;
+	color:#555;
+	text-decoration: none;
+ 	background: -webkit-gradient(linear, left top, left bottom, from(#3fa5fa), to(#3fa5fa));
+	border:0px ;
+	text-align: center;
+	font-size:20px;
+}
+
+
+.button{
+ 	background: -webkit-gradient(linear, left top, left bottom, from(#363636), to(#333));
+     width: 100%;
+     margin: 0 auto;
+     text-align: center;;
+ 	color:#555;
+}
+
+ */
+.label {
+    font-size: 12px;
+}
+.label b{
+	color:#000;
+}
+ /*
+.closeBox{
+    background-image: url("../assets/images/icons/close.png");
+    background-color: transparent;
+    display: inline-block;
+}
+*/
+
+
+/* 
+   **********************************************
+   *** Maqueta menu y grilla de imagenes      ***
+   **********************************************
+*/
+
+.pageOver {
+    position: absolute;
+	display:none;
+}
+		
+@media screen and (orientation:landscape) 
+{
+    
+    .page,.loading {
+        width: 1024px;
+    }
+    
+    .page,.content,.loading {
+        height: 768px;
+    }
+    
+    .pageContent,.Swip,.pageOver,.content {
+        width:957px;   /*(Page)-(Menu+MenuBorder)=(1024)-(64+3)*/
+     }
+    
+    .Swip{
+        height: 690px; /*(Page)-(pageTitle+panelMenu)=(768)-(44+34)*/
+    }
+    
+    .page {
+        display: block;
+    }
+     .pageMenu {
+        width: 64px;
+        height: 100%;
+        border-right: solid 3px #000;
+        float: left;
+    }
+    .pageContent{
+        height: 100%;
+        float: left;
+        display: block;
+    }
+    
+    .pageOver {
+		top:0;
+	}
+	
+    
+    /*
+	.vLineMenu{
+        display: table;
+        width: 100%;
+        height: 20%;
+    } */
+	.vItemMenu{
+        display: table-cell;
+        display: block;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 64px;
+        height: 64px;
+    }
+    /*
+    .vItemMenuOutter {
+        height: 64px;
+    } 
+	.closeBox{
+		background-position: 50% 50%;
+		text-align:right;
+	}
+	
+	.clear{
+ 		clear: both;
+	}
+
+	*/
+}
+/* Fin landScape */
+
+ 
+@media screen and (orientation:portrait) {
+        .page{
+			width: 768px;
+			height: 1024px;
+            display: block;
+        }
+        .pageMenu {
+            height: 64px;
+            width: 100%;
+            border-bottom: solid 3px #000;
+        }
+        .pageContent{
+            width: 100%;
+            height: 502px;
+            display: block;
+        }
+        
+       
+	
+        .loading{
+		    width: 768px;
+            height: 1024px;
+		}  
+	
+		
+		.vLineMenu{
+            line-height: 64px;
+            display: table;
+            width: 100%;
+        }
+        .vItemMenu{
+            height: 64px;
+            width: 64px;
+            display: table-cell;
+            background-repeat: no-repeat; 
+            background-position: center;
+        }
+        
+        .vItemMenuOutter {
+            width: 64px;
+            display: table-cell;
+            position: relative;
+            margin-right:1px;
+            margin-left:1px;
+        }  
+		.vItem {
+			float: none;
+			background-position: center;
+			 background-repeat: no-repeat;
+		}
+		.closeBox{
+		   background-position: 50% 50%;
+		}
+		.clear{clear:none}
+		
+		/*.pageOver {
+			top: 64px;
+		}
+		*/
+}
+/* Fin Portrait */
+ 
+ /*
+ 	.content{
+			height: 462px;
+		}*/
+	
+
+ .loading{
+	background: url("../assets/images/ajax-loader2.gif")  no-repeat center;
+	display: none;
+	position: absolute;
+    top: 0;
+    left:0;
+	ppadding-top: 1px;
+	ppadding-bottom: 1px;
+	background-color:#222;
+	opacity: 0.9;
+	}
+	 
+	.vItemMenuOutter{
+		float: right;
+	} 
+
+	.pageMenu {
+		background-color: #333;
+	}
+	.pageContent {
+		 background-color: #ddd;
+	}
+	.pageTitle
+	{
+		background-color:#d9d9d9;
+		color:#880055;
+		font-size:18px;
+		padding:0 10px;
+		line-height:44px;
+		position:relative;
+	}
+	 .panelMenu{
+ 	    background-color:#333;
+ 	    padding:0px 5px;
+ 	    line-height:20px;
+ 	    font-size:20px;
+ 	    color:#fff;
+ 	    text-align:right;
+ 	}
+	 
+	.pageMenuItem,.pageCloseItem
+	{
+	 
+	background-image: url("../assets/images/icons/menu.png");
+    background-color: #333;
+    background-repeat:no-repeat; 
+    display: block;
+    width:35px;
+    height:35px;
+    position:absolute;
+    right:5px;
+    top:4px;
+  
+}
+
+
+ 
+
+.pageMenuItem{
+	background-image: url("../assets/images/icons/menu.png");
+	right:45px;
+}
+.pageCloseItem{
+	background-image: url("../assets/images/icons/close.png");
+	background-size:32px 32px;
+	background-position:2px 2px;
+}
+
+ 
+ 
+
+	.pageMenu {
+		text-align: right;
+	}
+ 
+
+/* LIST */
+
+
+	ul {
+	  list-style-type: none;
+	  margin: 0;
+	  padding: 0;
+	}
+	 
+	li h3 {
+	  font: bold 15px/1.5 Helvetica, Verdana, sans-serif;
+	  margin-top: 5px;
+	}
+	 
+	li img {
+	  float: left;
+	  margin: 0 15px 0 0;
+	}
+	 
+	li p {
+	  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+	}
+	 
+	li, .lineApp {
+		background: #e4e4e4;
+		margin-bottom: 2px;
+		padding: 5px;
+		overflow: auto;
+	}
+	 
+	li:hover {
+	  background: #e9e9e9;
+	  cursor: pointer;
+	}
+
+	li.selected{
+		border-right: solid 5px green;
+	} 
+	
+	
+	

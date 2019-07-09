@@ -1,0 +1,17 @@
+NewsBus
+NewsData
+app_code\NewsReader.cs
+
+
+CREATE  PROCEDURE [dbo].[News_GetAllGreaterThanId]
+@id int
+AS
+BEGIN
+		SELECT b.nombre diario, a.Link
+	from News  a
+	inner join NewsPaper b
+		on a.IdNewsPaper=b.IdNewsPaper
+
+	WHERE IdNew> @id 
+        ORDER BY  b.nombre DESC   
+END

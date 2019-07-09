@@ -1,0 +1,145 @@
+﻿DB: v0011129_reader_news
+user: v0011129_reader_news
+pwd: ReaderNews99 
+
+
+ Clarin
+ --
+ <item>
+      <title>Se cumplen diez años del día más dorado del deporte argentino</title>
+      <link>http://clarin.feedsportal.com/c/33088/f/577683/s/3def50f1/sc/14/l/0L0Sclarin0N0Cdeportes0Ccumplen0Eanos0Edorado0Edeporte0Eargentino0Eatenas0E20A0A40I0A0I120A10A80A3840Bhtml/story01.htm</link>
+      <description>
+	  
+	  Las selecciones de fútbol y básquet se subieron a lo más alto del podio en los Juegos Olímpicos de Atenas y acabaron con una sequía de 52 años.
+	  &lt;img width='1' height='1' src='http://clarin.feedsportal.com/c/33088/f/577683/s/3def50f1/sc/14/mf.gif' 
+	  border='0'/&gt;&lt;br clear='all'/&gt;&lt;br/&gt;&lt;br/&gt;&lt;a 
+	  href="http://da.feedsportal.com/r/204366995698/u/0/f/577683/c/33088/s/3def50f1/sc/14/rc/1/rc.htm" 
+	  rel="nofollow"&gt;&lt;img src="http://da.feedsportal.com/r/204366995698/u/0/f/577683/c/33088/s/3def50f1/sc/14/rc/1/rc.img" 
+	  border="0"/&gt;&lt;/a&gt;&lt;br/&gt;&lt;a 
+	  href="http://da.feedsportal.com/r/204366995698/u/0/f/577683/c/33088/s/3def50f1/sc/14/rc/2/rc.htm" 
+	  rel="nofollow"&gt;&lt;img 
+	  src="http://da.feedsportal.com/r/204366995698/u/0/f/577683/c/33088/s/3def50f1/sc/14/rc/2/rc.img" 
+	  border="0"/&gt;&lt;/a&gt;&lt;br/&gt;&lt;a 
+	  href="http://da.feedsportal.com/r/204366995698/u/0/f/577683/c/33088/s/3def50f1/sc/14/rc/3/rc.htm" 
+	  rel="nofollow"&gt;&lt;img 
+	  src="http://da.feedsportal.com/r/204366995698/u/0/f/577683/c/33088/s/3def50f1/sc/14/rc/3/rc.img" 
+	  border="0"/&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a 
+	  href="http://da.feedsportal.com/r/204366995698/u/0/f/577683/c/33088/s/3def50f1/sc/14/a2.htm"&gt;&lt;img 
+	  src="http://da.feedsportal.com/r/204366995698/u/0/f/577683/c/33088/s/3def50f1/sc/14/a2.img" 
+	  border="0"/&gt;&lt;/a&gt;&lt;img width="1" height="1" 
+	  src="http://pi.feedsportal.com/r/204366995698/u/0/f/577683/c/33088/s/3def50f1/sc/14/a2t.img" border="0"/&gt;
+
+	  </description>
+      
+	  
+	  <enclosure url="http://clarin.feedsportal.com/c/33088/f/577683/e/1/s/3def50f1/l/0L0Sclarin0N0Cdeportes0Cseleccionados0EAtenas0EArchivo0ERicardo0EGonzalez0ICLAIMA20A140A8270I0A2870I40Bjpg/seleccionados-Atenas-Archivo-Ricardo-Gonzalez_CLAIMA20140827_0287_4.jpg" 
+	  length="53713" 
+	  type="image/jpeg" />
+      <pubDate>Thu, 28 Aug 2014 11:55:04 GMT</pubDate>
+      <guid isPermaLink="false">http://www.clarin.com/deportes/cumplen-anos-dorado-deporte-argentino-atenas-2004_0_1201080384.html</guid>
+    </item>
+    <item>
+
+
+<link> redirige a la direccion de 
+http://clarin.feedsportal.com/c/33088/f/577683/s/3def50f1/sc/14/l/0L0Sclarin0N0Cdeportes0Ccumplen0Eanos0Edorado0Edeporte0Eargentino0Eatenas0E20A0A40I0A0I120A10A80A3840Bhtml/story01.htm
+<guid isPermaLink="false">
+http://www.clarin.com/deportes/cumplen-anos-dorado-deporte-argentino-atenas-2004_0_1201080384.html
+<enclosure> imagen de la noticia
+<title>
+<description> Tiene contenido HTML (hay que parsear y tomar solo el texto)
+ <pubDate>
+
+var xdoc = XDocument.Parse(myXmlData);
+var query = 
+  from p in xdoc.Root.Elements("pub")
+  let ws = p.Elements("configitem")
+            .FirstOrDefault(c => (string)c.Attribute("name") == "working_status")
+  select new {
+      Id = (string)p.Attribute("id"),
+      Lang = (string)p.Attribute("lang"),
+      WorkingStatus = (ws == null) ? null : (string)ws.Attribute("value")
+  };
+
+
+-- -----------------------------------------------------------------------
+	http://www.dotnetcurry.com/showarticle.aspx?ID=564
+-- -----------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using System.Net;
+using System.IO;
+using System.Text;
+using System.Threading;
+using HtmlAgilityPack;
+ 
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using System.Xml.Linq;
+
+
+public partial class _Default : System.Web.UI.Page
+{
+private static ManualResetEvent allDone = new ManualResetEvent(false);
+
+    static  string strPage = "";
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.clarin.com/rss/deportes/");
+        request.ContentType = "application/x-www-form-urlencoded";
+		request.Method = "POST";
+        request.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), request);
+		allDone.WaitOne();
+
+       // Response.Write(strPage);
+ 
+
+	
+    }
+    
+     private static void GetRequestStreamCallback(IAsyncResult asynchronousResult)
+    {
+        HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
+
+        Stream postStream = request.EndGetRequestStream(asynchronousResult);
+
+        string postData = "test";
+
+        byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+
+        postStream.Write(byteArray, 0, postData.Length);
+        postStream.Close();
+
+        request.BeginGetResponse(new AsyncCallback(GetResponseCallback), request);
+    }
+
+    private static void GetResponseCallback(IAsyncResult asynchronousResult)
+    {
+        HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
+
+        HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
+        Stream streamResponse = response.GetResponseStream();
+        StreamReader streamRead = new StreamReader(streamResponse);
+        strPage = streamRead.ReadToEnd();
+       
+        streamResponse.Close();
+        streamRead.Close();
+        response.Close();
+        allDone.Set();
+    }
+    
+    
+
+
+}
+
+
+

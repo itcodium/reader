@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+ <meta charset="UTF-8">
+     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+     <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+ 	
+    <link rel="stylesheet"  href="css/viupho.css" />
+    <link rel="stylesheet"  href="css/buttons.css" />
+    <link rel="stylesheet"  href="css/tables.css" />
+ 
+    <script src="js/jquery-1.7.2.min.js"></script>
+    
+    <link href="js/JQueryUI/themes/default/ui.all.css" rel="stylesheet" type="text/css" />
+    <link href="js/JQueryUI/drag.css" rel="stylesheet" type="text/css" />
+    
+    <script src="js/JQueryUI/ui/ui.core.js" type="text/javascript"></script>
+    <script src="js/JQueryUI/ui/ui.draggable.js" type="text/javascript"></script>
+	
+	
+    
+    
+    <script src="js/backboneJS/underscore-min.js"></script>
+    <script src="js/backboneJS/backbone-min.js"></script>
+    <script src="pages/app.storage.js" type="text/javascript"></script>    
+    <script src="pages/Common.js"></script>
+    <script src="pages/form.js"></script>
+    <script src="pages/Text.View.js"></script>
+    
+    <script src="pages/Panel.js"></script>
+    <script src="pages/columns.js"></script>
+    <script src="pages/tables.js"></script>
+    <script src="pages/Table.Data.js"></script>
+    <script src="js/iscroll/iscroll-lite.js"></script>
+    
+    
+    
+  <script type="text/javascript">
+    // Variables globales de la aplicacion
+      var app_storage = new AppStorage();
+      var pnlTableDataPanel; // Panel datos de la tabla
+      var pnlTableList;
+      var pnlTableDataCustomPanel;
+      var lstTableColumnsData = new ColumnsList();
+      var lstSelecDataTree = new TableList();
+      var APP_TABLE_FILTER=''
+      var COLUMN_CONTROL = new ColumnsControler();
+          COLUMN_CONTROL.setAjaxSpin("#Loading");
+      
+      $(document).ready(function() {
+          ctrlTables.TableGetAll(tables_get_callback,{ schema: "", database: "v0011129_reader_news" });
+
+        /*
+          var p1 = new Table({ schema_name: 'dbo', name: 'test_1' });
+          lstSelecDataTree.add(new Table({ schema_name: 'dbo', name: 'test_1' }));
+          lstSelecDataTree.first();
+          lstSelecDataTree.reset();
+          */
+
+
+
+      });
+    </script>
+ 
+</head>
+
+<body>
+      <div id="Page" class="page">
+            <div id="PageMenu" class="pageMenu">
+                <a class="vItemMenu home" href="index.html"></a>
+                <a class="vItemMenu table"></a>
+                <a class="clear"></a>
+            </div>
+	        <div id="wrapper" class="pageContent" >
+                <div id="scroller">
+                        
+                    <div id="TablePanel"     class="content"></div>
+                    <div id="TextPanel" class="content" style="position:absolute;top:0;display:none;"></div>                  
+                    <div id="TableListPanel" class="content" style="position:absolute;top:0;display:none;"></div>
+                    <div id="TableDataCustomPanel" class="content" style="position:absolute;top:0;display:none;"></div>                  
+                    <div id="ColumnsPanel" class="content" style="position:absolute;top:0;display:none;"></div>                  
+                    <div id="TableDataPanel" class="content" style="position:absolute;top:0;display:none;"></div>
+                    <div id="Loading" class="loading">&nbsp;</div>
+                </div>
+                <div id="log"></div>
+	        </div>
+        </div>
+
+        <div id="TableFilterPanel" class="content" ></div>
+ 
+                    
+ 
+    <script type="text/x-underscore-template" id="PanelTemplate">
+        <div id="<%=this.cid%>" class="page pageOver">
+            <div id="<%=this.cid%>_Content" class="pageContent">
+                <h1 class="pageTitle"><span class="pageTitleContent"><%= title %></span>&nbsp;
+                    <span id="<%=this.cid%>_Menu"  data-id="<%=this.cid%>"  class="pageMenuItem"></span>
+                    <span id="<%=this.cid%>_Close"  data-id="<%=this.cid%>"  class="pageCloseItem"></span>
+                </h1>
+                <div id="<%=this.cid%>_MenuContent" class="panelMenu"></div>
+            </div>
+        </div>
+    </script> 
+ 
+    <script type="text/x-underscore-template" id="TextTemplate">
+        <div id="<%=ParentID%>_TemplateContentPanel" style="height:100%;">
+            <textarea style="width:100%;height:50%;"><%=text%></textarea>
+        </div>
+    </script> 
+    
+    <script type="text/x-underscore-template" id="TableTemplate">
+            <div id="<%=ParentID%>_TemplateContentPanel" class="Swip">
+        	    <ul>
+                <%if (models.length==0){%> 
+                    <div class="LineMessage" >No se encontraron datos para la busqueda realizada.</div>
+                <% }; %>    
+                <%for (var i = 0, len =  models.length; i < len; i++){%> 
+                    <li class="item" style="height:48px;overflow-x: hidden;" data-schema="<%= models[i].get("schema_name")%>" data-name="<%= models[i].get("name")%>" data-id="<%= models[i].cid %>">
+					    <img src='images/table.png' />
+                        <span class="label"><b><%= models[i].get("schema_name")%>.<%= models[i].get("name")%></b> 
+                        <br>modify_date:  <%= models[i].get("modify_date").substr(0,11) %> 
+                            <a  class="TableColumns" data-schema="<%= models[i].get("schema_name")%>" data-name='<%= models[i].get("name")%>' href="#">Listar Columnas</a>
+                            <a  class="tableData" data-schema="<%= models[i].get("schema_name")%>"  data-name='<%= models[i].get("name")%>' href="#">Datos</a>
+                            <a  class="tableNavigate" data-schema="<%= models[i].get("schema_name")%>"  data-name='<%= models[i].get("name")%>' href="#">Navigate</a>
+                        </span> 
+                    </li>
+                <% }; %>    
+                </ul>
+            </div>        
+    </script> 
+
+    
+    <script type="text/x-underscore-template" id="ColumnsTemplate">
+            <div id="<%=ParentID%>_TemplateContentPanel" class="Swip">
+        	    <ul>
+                <%for (var i = 0, len =  models.length; i < len; i++){%> 
+                    <li class="item <% console.log(models[i].get("enabled"));if( models[i].get("enabled")==1 || models[i].get("enabled")=="True"){%><%= "selected"%><%}%>"  data-object_id="<%= models[i].get("object_id")%>" data-id="<%= models[i].get("name")%>"  style="height:48px;overflow-x: hidden;" data-name="<%= models[i].get("name")%>">
+					    <span class="label"><b><%= models[i].get("name")%></b></span>
+                    </li>
+                <% }; %>    
+                </ul>
+            </div>        
+    </script> 
+
+    <script type="text/x-underscore-template" id="TableDataTemplate">
+        <div id="<%=ParentID%>_TemplateContentPanel">
+            <table class="hor-minimalist-a TableDataContent">
+                <thead>
+                    <tr>
+                    <%for (subItem in this.model.data[2].datos[0]) {%>
+                        <th><%=subItem %></th>
+                    <%}%>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (item in this.model.data[2].datos) {%>
+                        <tr onclick='console.log("Fila:",$(this).html());'>
+                            <%var c=0; for (subItem in this.model.data[2].datos[item]) {%>
+                                <td data-name="<%=Object.keys(this.model.data[2].datos[item])[c]%>">
+                                <%var v=this.model.data[2].datos[item][subItem];if( v!=null && v.toString().indexOf("Date") > -1){%><%=new Date(parseInt(v.toString().substr(6))).yyyymmdd()%> <%}else{%> <%=ValidURL(v)%><%} %></td>
+                                
+                            <%c=c+1;}%>
+                        </tr>
+                   <%}%>
+                </tbody>
+            </table>
+        </div>
+    </script> 
+    
+        <script type="text/x-underscore-template" id="TableDataCustomTemplate">
+        <div id="<%=ParentID%>_TemplateContentPanel">
+            <table class="hor-minimalist-a TableDataContent">
+                <thead>
+                    <tr>
+                    <%for (subItem in this.model.data[1].datos[0]) {%>
+                        <th><%=subItem %></th>
+                    <%}%>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (item in this.model.data[1].datos) {%>
+                        <tr class="item">
+                            <%var c=0; for (subItem in this.model.data[1].datos[item]) {%>
+                                <td data-pk="" data-name="<%=Object.keys(this.model.data[1].datos[item])[c]%>">
+                                    <% var v=this.model.data[1].datos[item][subItem];if( v!=null && v.toString().indexOf("Date") > -1){%><%=new Date(parseInt(v.toString().substr(6))).yyyymmdd()%><%}else {%><%=ValidURL(v) %><%}%></td>
+                            <%c=c+1;}%>
+                        </tr>
+                   <%}%>
+                </tbody>
+            </table>
+        </div>
+    </script> 
+ 
+ 
+     <script type="text/x-underscore-template" id="TableListTemplate">
+                <div id="<%=ParentID%>_TemplateContentPanel" class="Swip">
+        	        <ul>
+                    <%if (this.model.length==0){%> 
+                        <div class="LineMessage" >No se encontraron datos para la busqueda realizada.</div>
+                    <% }; %>    
+                    <%for (var i = 0, len =  this.model.length; i < len; i++){%> 
+                         <li class="item" style="height:48px;overflow-x: hidden;" data-type="<%= this.model[i].type%>"  data-schema="<%= this.model[i].schema%>" data-name="<%= this.model[i].table%>" >
+                            <span class="label"><b><%= this.model[i].schema%>.<%= this.model[i].table%></b></span> 
+                        </li>
+                    <% }; %>    
+                    </ul>
+                </div>        
+        </script> 
+
+        <script type="text/x-underscore-template" id="TableListDataTemplate">
+                <div id="<%=ParentID%>_TemplateContentPanel" class="Swip">
+        	        <ul>
+                    <%if (models.length==0){%> 
+                        <div class="LineMessage" >No se encontraron datos para la busqueda realizada.</div>
+                    <% }; %>    
+                    <%for (var i = 0, len =  models.length; i < len; i++){%> 
+                        <li class="item" style="height:48px;overflow-x: hidden;"   data-pk="<%= models[i].get("pk")%>" data-schema="<%= models[i].get("schema") data-table="<%= models[i].get("table")%> >
+                            <span class="label"><b><%= models[i].get("description")%></b></span> 
+                        </li>
+                    <% }; %>    
+                    </ul>
+                </div>        
+        </script> 
+
+    <script type="text/x-underscore-template" id="TableFilterTemplate">
+       <div id="TableFilter" class="Form">
+          <div class="move">Filtrar Tablas</div>
+            <div class="FormContent">
+                <div class="LineTransparent">
+                <span class="Label">Schema: dbo</span> 
+                    <span class="Label"></span> <input id="frmTableFilter" class="TextBox" style="width:100%" type="text" />
+                </div>
+                <div class="LineTransparent">
+
+                    <input id="frmTableFilterSendForm"  class="black" type="button" value="Enviar" />
+                    <input id="frmTableFilterCancel"    class="black" type="button" value="Cancelar" />
+                    <input id="frmTableFilterClear"    class="black" type="button" value="Limpiar" />
+                </div>
+            </div>
+        </div>
+    </script> 
+    
+ <!--- -
+   <li class="item" style="height:48px;overflow-x: hidden;" data-type="<%= this.model[i].get("type")%>"  data-schema="<%= this.model[i].get("schema")%>" data-name="<%= this.model[i].get("table")%>" >
+                            <span class="label"><b><%= this.model[i].get("schema")%>.<%= this.model[i].get("table")%></b></span> 
+                        </li>
+-->
+
+  </body>
+</html>
+
+ 

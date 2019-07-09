@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+ <meta charset="UTF-8">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+ 	
+    <script src="../../js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="../../js/underscore-1.7.0.min.js" type="text/javascript"></script>
+    <script src="../../js/backbone-1.1.2.min.js" type="text/javascript"></script>
+    <script src="../../js/lib1.2/iscroll-lite.js" type="text/javascript"></script>
+    <script src="../../js/lib1.2/PanelMessage.js" type="text/javascript"></script>
+    <script src="../../js/lib1.2/PanelConfig.js" type="text/javascript"></script>
+    <script src="../../js/lib1.2/PanelView.js" type="text/javascript"></script>
+    <script src="../../js/lib1.2/AjaxCaller.js" type="text/javascript"></script>
+    <script src="../../js/lib1.2/FeedsPhotos.js" type="text/javascript"></script>
+    
+    
+    
+	<link rel="stylesheet"  href="../empty_html/styles/empty.css" />
+	<link rel="stylesheet"  href="../assets/styles/global.css" />	
+	<link rel="stylesheet"  href="../panel/styles/panel.css" />
+	<link rel="stylesheet"  href="../assets/styles/buttons.css" />
+	
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var pho2 = new FeedsPhotos();
+            pho2.ajaxSpin("#AjaxSpin");
+            pho2.panel("#PhotoPanel");
+
+            $("#OpenPanel").click(function() {
+                pho2.GetPhotos("http://api.flickr.com/services/feeds/photos_public.gne",
+                              "format=json");
+            });
+        });
+    </script>
+ 
+ 
+ <style>
+     ul{
+     	padding:0px;
+     	margin:0px;
+     }
+     .item{
+ 	    background-color:#eee;
+ 	    }
+ </style>
+</head>
+	<body> 
+ 
+	   <div id="MessagePanel" style="position:absolute;top:0;width:100%;"></div> 
+		<div id="Page" class="pagePanel">
+            <div id="PageMenu" class="pageMenu">
+                <a class="vItemMenu home" href="../../index.html"></a>
+                <a class="vItemMenu table" href="#"></a>
+                <a class="clear"></a>
+            </div>
+	        <div id="wrapper" class="pageContent" >
+					<input id="OpenPanel"  class="button red large" type="button" value="Agregar Contenido Ajax en un panel"/>
+					 
+				    <div id="PagePanel">&nbsp;</div>		
+	        </div>
+	        
+        </div>
+		<div id="PhotoPanel"></div>
+		
+		
+ 
+       
+    
+        
+        <div id="AjaxSpin" class="loading">
+            <h1>
+                <span id="AjaxAbort" class="pageCloseItem"></span>
+             </h1>
+        </div>
+		
+		 <script type="text/x-underscore-template" id="PanelTemplate">
+            <div id="<%=this.cid%>" class="pageOver">
+                <h1 class="pageTitle">
+                    <span class="pageTitleContent"><%= title %></span>&nbsp;
+                    <span id="<%=this.cid%>_Menu"  data-id="<%=this.cid%>"  class="pageMenuItem"></span>
+                    <span id="<%=this.cid%>_Close"  data-id="<%=this.cid%>"  class="pageCloseItem"></span>
+                </h1>
+                <div id="<%=this.cid%>_MenuContent" class="panelMenu"></div>
+                <div id="<%=this.cid%>_Content" class="pageOverContent"></div>
+            </div>
+        </script> 	
+
+
+
+        <script type="text/x-underscore-template" id="PhotoTemplate">
+        	    <ul>
+                    <%if (models.length==0){%> 
+                        <div class="LineMessage" >No se encontraron datos para la busqueda realizada.</div>
+                    <% }; %>    
+                    <%for (var i = 0, len =  models.length; i < len; i++){%> 
+                        <li class="item" style="height:48px;overflow-x: hidden;" data-id="<%= models[i].cid %>">
+					        <%= models[i].get("src")%>
+                        </li>
+                    <% }; %>    
+                </ul>
+    </script> 
+
+			
+		  
+	</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+ <meta charset="UTF-8">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+ 	
+    <script src="../../js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="../../js/json2.js" type="text/javascript"></script>
+    <script src="../../js/underscore-1.7.0.min.js" type="text/javascript"></script>
+    <script src="../../js/backbone-1.1.2.min.js" type="text/javascript"></script>
+	<link rel="stylesheet"  href="../empty_html/styles/empty.css" />
+	<link rel="stylesheet"  href="../assets/styles/global.css" />
+	<link rel="stylesheet"  href="styles/panel.css" />
+	
+ 
+</head>
+	<body> 
+	
+    <script type="text/javascript">
+        
+        (function($) {
+            Backbone.sync = function(method, model, success, error) {
+                success();
+            }
+
+            var Item = Backbone.Model.extend({
+                defaults: {
+                    part1: 'hello',
+                    part2: 'world'
+                }
+            });
+
+            var List = Backbone.Collection.extend({
+                model: Item
+            });
+
+            var ItemView = Backbone.View.extend({
+                tagName: 'li',
+                events: {
+                    'click span.swap': 'swap',
+                    'click span.delete': 'remove'
+                },
+                initialize: function() {
+                    _.bindAll(this, 'render', 'unrender', 'swap', 'remove'); // every function that uses 'this' as the current object should be in here
+
+                    this.model.bind('change', this.render);
+                    this.model.bind('remove', this.unrender);
+                },
+                render: function() {
+                    $(this.el).html('<span style="color:black;">' + this.model.get('part1') + ' ' + this.model.get('part2') + '</span> &nbsp; &nbsp; <span class="swap" style="font-family:sans-serif; color:blue; cursor:pointer;">[swap]</span> <span class="delete" style="cursor:pointer; color:red; font-family:sans-serif;">[delete]</span>');
+                    return this; 
+                },
+                unrender: function() {
+                    $(this.el).remove();
+                },
+                swap: function() {
+                    var swapped = {
+                        part1: this.model.get('part2'),
+                        part2: this.model.get('part1')
+                    };
+                    this.model.set(swapped);
+                },
+                remove: function() {
+                    this.model.destroy();
+                }
+            });
+
+            var ListView = Backbone.View.extend({
+                el: $('body'), 
+                events: {
+                    'click button#add': 'addItem'
+                },
+                initialize: function() {
+                    _.bindAll(this, 'render', 'addItem', 'appendItem'); 
+                    this.collection = new List();
+                    this.collection.bind('add', this.appendItem); 
+                    this.counter = 0;
+                    this.render();
+                },
+                render: function() {
+                    var self = this;
+                    $(this.el).append("<button id='add'>Add list item</button>");
+                    $(this.el).append("<ul></ul>");
+                    _(this.collection.models).each(function(item) { // in case collection is not empty
+                        self.appendItem(item);
+                    }, this);
+                },
+                addItem: function() {
+                    this.counter++;
+                    var item = new Item();
+                    item.set({
+                        part2: item.get('part2') + this.counter // modify item defaults
+                    });
+                    this.collection.add(item);
+                },
+                appendItem: function(item) {
+                    var itemView = new ItemView({
+                        model: item
+                    });
+                    $('ul', this.el).append(itemView.render().el);
+                }
+            });
+
+            var listView = new ListView();
+        })(jQuery);
+    </script>
+	</body>
+</html>
+
+
+

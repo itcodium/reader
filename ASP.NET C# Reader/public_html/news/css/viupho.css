@@ -1,0 +1,267 @@
+
+/* http://brankic1979.com/icons */
+* {margin: 0; padding: 0;
+
+   }
+
+html{	
+	padding:0;
+	margin:0;
+
+}
+
+body{
+	padding:0;
+	margin:0;
+	font-family: Arial;
+	font-size: 0.72em;
+	background-color: #ccc;
+	-webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+}
+
+#scroller {
+	z-index:1;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	padding:0;
+}
+
+.home{
+	background-image: url("../assets/images/icons/home.png");
+    background-size: 32px 32px;
+}
+.table{
+	background-image: url("../images/table.png");
+    background-size: 32px 32px;
+}
+ 
+ /*
+
+Page: 
+
+landscape
+width
+
+portrait
+width
+
+
+*/
+@media screen and (orientation:landscape) 
+{
+    .page,.loading {
+        width: 1024px;
+    }
+    
+    .page,.content,.loading {
+        height: 768px;
+        height: 768px;
+    }
+    
+    .pageContent,.Swip,.pageOver,.content {
+        width:957px;   /*(Page)-(Menu+MenuBorder)=(1024)-(64+3)*/
+     }
+    
+    .Swip{
+        height: 690px; /*(Page)-(pageTitle+panelMenu)=(768)-(44+34)*/
+    }
+    .pageMenu, .pageContent{
+        height: 100%;
+         float: left;
+     }
+    
+    .page,.pageContent,.vItemMenu {
+        display: block;
+    }
+    
+    .pageMenu {
+        width: 64px;
+        border-right: solid 3px #000;
+    }
+    
+    .pageOver {
+		top:0;
+	}
+	.vItemMenu{
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 64px;
+        height: 64px;
+    }
+}
+/* Fin landScape */
+
+ 
+@media screen and (orientation:portrait) 
+{
+     .page,.pageMenu ,.loading,.pageContent,.Swip,.pageOver {
+        width: 768px;
+    }
+    
+    .page,.loading{
+        height: 1024px;   
+    }
+     .content,.pageContent{
+         height: 957px;   /*(Page)-(Menu+MenuBorder)=(1024)-(64+3)*/
+     }
+    .Swip{
+        height: 882px; /*(Page)-(pageTitle+panelMenu)=(1024)-(64+44+34)*/
+    }
+    
+    .page,.pageContent,.vItemMenu {
+        display: block;
+    }
+    
+    .pageMenu {
+        height: 64px;
+        border-bottom: solid 3px #000;
+    }
+    
+	.vItemMenu{
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 64px;
+        height: 64px;
+        float:left;
+    }
+    
+    .clear{
+        clear:both;
+     } 
+}
+/* Fin Portrait */
+ 
+	
+
+ .loading{
+	background: url("../assets/images/ajax-loader2.gif")  no-repeat center;
+	display: none;
+	position: absolute;
+    top: 0;
+    left:0;
+	background-color:#222;
+	opacity: 0.9;
+	z-index:500;
+	}
+	
+	.loadingSpin{
+	background: url("../assets/images/ajax-loader2.gif")  no-repeat center;
+	}
+ 
+	 .pageOver {
+		position: absolute;
+		display:none;
+		z-index:100;
+	}
+    .page{
+     z-index:101;
+     }
+	.pageMenu {
+		background-color: #333;
+	}
+	.pageContent {
+		 background-color: #ddd;
+	}
+	.pageTitle
+	{
+		background-color:#d9d9d9;
+		color:#880055;
+		padding:0 10px;
+		line-height:44px;
+		position:relative;
+	}
+	 .panelMenu{
+ 	    background-color:#333;
+ 	    padding:0px 5px;
+ 	    line-height:20px;
+ 	    line-height:34px; 
+ 	    color:#fff;
+ 	    text-align:right;
+ 	}
+	 
+	.pageMenuItem,.pageCloseItem
+	{
+	    background-image: url("../assets/images/icons/menu.png");
+        background-color: #333;
+        background-repeat:no-repeat; 
+        display: block;
+        width:35px;
+        height:35px;
+        position:absolute;
+        right:5px;
+        top:4px;
+    }
+
+    .pageMenuItem{
+	    background-image: url("../assets/images/icons/menu.png");
+	    right:45px;
+    }
+    .pageCloseItem{
+	    background-image: url("../assets/images/icons/close.png");
+	    background-size:32px 32px;
+	    background-position:2px 2px;
+    }
+
+ 	.pageMenu {
+		text-align: right;
+	}
+ 
+
+/* LIST */
+
+
+	ul {
+	  list-style-type: none;
+	  margin: 0;
+	  padding: 0;
+	}
+	 li {line-height:14px;}
+	li h3 {
+	  margin-top: 5px;
+	}
+	 
+	li img {
+	  right: 0;
+	  margin: 0 15px 0 0;
+	}
+	
+	li a
+	{
+		font-size: 12px;
+	    color:#333;
+	    font-weight:bold;
+		text-decoration: none;
+		margin-bottom:4px;
+	}
+	
+	li a:hover
+	{	text-decoration: underline;}
+	
+	li p {
+	  font-size: 11px;
+	  color:#222;
+	  text-align:justify;
+ 
+	}
+	li p.title   span
+	 {
+	 	float:right;
+	}
+	li, .lineApp {
+		background: #e4e4e4;
+		margin-bottom: 2px;
+		padding: 5px;
+		overflow: auto;
+	}
+	 
+	li:hover {
+	  background: #e9e9e9;
+	  cursor: pointer;
+	}
+
+	li.selected{
+		border-right: solid 5px green;
+	} 
+	
+	
+	

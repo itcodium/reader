@@ -1,0 +1,22 @@
+https://code.google.com/p/google-code-prettify/wiki/GettingStarted
+
+/*
+ *****************************
+	json size
+ *****************************
+*/
+
+<system.web.extensions>
+  <scripting>
+    <webServices>
+      <jsonSerialization maxJsonLength="50000000"/>
+    </webServices>
+  </scripting>
+</system.web.extensions>
+
+
+/**/
+
+var jsondate="/Date(1224043200000)/";
+
+var date = new Date(jsondate); 

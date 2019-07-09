@@ -1,0 +1,45 @@
+ 
+<!DOCTYPE HTML>
+<html>
+  <head>
+ <meta charset="UTF-8">
+     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+     <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+
+<body>
+    <div id="DarkPanel" class="content"></div>
+
+    <script src="common.js"></script>
+    
+    <script src="../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../js/backboneJS/underscore-min.js"></script>
+    <script src="../../js/backboneJS/backbone-min.js"></script>
+    
+    <script src="Dark.model.js"></script>
+    <script src="Dark.controler.js"></script>
+    <script src="Dark.view.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var dark= new DarkControler();
+                dark.GetData(Dark_callback);
+        });
+    </script>
+
+
+    <script type="text/x-underscore-template" id="DarkTemplate">
+        <ul>
+            <%for (var i = 0, len =  lstDark.length; i < len; i++){%> 
+                        <li data-name="<%= lstDark[i].name%>">
+					    <span class="label"><%= lstDark[i].name%></b></span>
+                        </li>
+            <% }; %>    
+        </ul>
+    </script> 
+
+</body>
+</html>

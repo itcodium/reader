@@ -1,0 +1,20 @@
+.page: 			Es la pagina principal del site
+.pageMenu:		Menu fijo de la aplicacion	
+.pageContent:	Contenido de la pagina
+
+
+Size (width,height)px: 
+	landscape
+
+		.page (1024,768)
+		.pageMenu(64,100%)
+		.pageContent(957,100%)
+
+	portrait
+		.page (768,1024)
+		.pageMenu (100%,64)
+		.pageContent (100%,502)
+		.loading (768,1024)
+		
+		
+	

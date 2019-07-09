@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+ <meta charset="UTF-8">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+ 	
+    <script src="../../js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="../../js/underscore-1.7.0.min.js" type="text/javascript"></script>
+    <script src="../../js/backbone-1.1.2.min.js" type="text/javascript"></script>
+    <script src="../../js/lib/PanelMessage.js" type="text/javascript"></script>
+    <script src="test/AjaxCaller.js" type="text/javascript"></script>
+    <script src="test/wsfe_test.js" type="text/javascript"></script>
+    
+    
+    
+	<link rel="stylesheet"  href="../empty_html/styles/empty.css" />
+	<link rel="stylesheet"  href="../assets/styles/global.css" />	
+	<link rel="stylesheet"  href="../panel/styles/panel.css" />
+	<link rel="stylesheet"  href="../assets/styles/buttons.css" />
+    <script type="text/javascript">
+
+        var vFacturaOtrosAtributosList;
+        var vFacturaResumenTotalList;
+ 
+
+        $(document).ready(function () {
+            var url = "";
+            //url = "http://localhost:50420/wsfe.asmx";
+            url = "http://wsfe.ilimek.com.ar/wsfe.asmx";
+             
+             
+                 var w = new wsfe();
+
+            w.ajaxSpin("#CondicionIvaGetAll");
+            w.content("#CondicionIvaGetAll");
+            w.CondicionIvaGetAll(url + "/CondicionIvaGetAll", "");
+
+            var w2 = new wsfe();
+            w2.ajaxSpin("#LoginTest");
+            w2.content("#LoginTest");
+            w2.Login(url + "/Login", { usuario: "administrador", password: "123123" });
+
+
+            var w3 = new wsfe();
+            w3.ajaxSpin("#TipoComprobantesGetAll");
+            w3.content("#TipoComprobantesGetAll");
+            w3.TipoComprobantesGetAll(url + "/TipoComprobantesGetAll", "");
+
+
+            var w4 = new wsfe();
+            w4.ajaxSpin("#ConceptosGetAll");
+            w4.content("#ConceptosGetAll");
+            w4.ConceptosGetAll(url + "/ConceptosGetAll", "");
+
+            var w5 = new wsfe();
+            w5.ajaxSpin("#AlicuotaIvaGetAll");
+            w5.content("#AlicuotaIvaGetAll");
+            w5.AlicuotaIvaGetAll(url + "/AlicuotaIvaGetAll", "");
+
+
+            var w6 = new wsfe();
+            w6.ajaxSpin("#TipoDocumentoGetAll");
+            w6.content("#TipoDocumentoGetAll");
+            w6.TipoDocumentoGetAll(url + "/TipoDocumentoGetAll", "");
+
+            var w6 = new wsfe();
+            w6.ajaxSpin("#ProvinciaGetAll");
+            w6.content("#ProvinciaGetAll");
+            w6.ProvinciaGetAll(url + "/ProvinciaGetAll", "");
+
+
+
+            var w7 = new wsfe();
+            w7.ajaxSpin("#UnidadMedidaGetAll");
+            w7.content("#UnidadMedidaGetAll");
+            w7.UnidadMedidaGetAll(url + "/UnidadMedidaGetAll", "");
+
+
+            var w8 = new wsfe();
+            w8.ajaxSpin("#CondicionVentaGetAll");
+            w8.content("#CondicionVentaGetAll");
+            w8.CondicionVentaGetAll(url + "/CondicionVentaGetAll", "");
+      
+                
+
+            var w9 = new wsfe();
+            w9.ajaxSpin("#EmpresaGetAll");
+            w9.content("#EmpresaGetAll");
+            w9.EmpresaGetAll(url + "/EmpresaGetAll", { IdUsuario: 7 });
+
+
+            var a = new wsfe();
+            a.ajaxSpin("#EmpresaPuntoVenta");
+            a.content("#EmpresaPuntoVenta");
+            a.EmpresaPuntoVenta(url + "/EmpresaPuntoVenta", { IdEmpresa: 7 });
+
+     
+
+
+            var b = new wsfe();
+            b.ajaxSpin("#AtributosItemsGetAllByIdEmpresa");
+            b.content("#AtributosItemsGetAllByIdEmpresa");
+            b.AtributosItemsGetAllByIdEmpresa(url + "/AtributosItemsGetAllByIdEmpresa", { IdEmpresa: 7 });
+
+
+            var b1 = new wsfe();
+            b1.ajaxSpin("#DatosOperacionResumenTotal");
+            b1.content("#DatosOperacionResumenTotal");
+            b1.DatosOperacionResumenTotal(url + "/DatosOperacionResumenTotal", { importeTotal: false });
+        
+
+
+            vFacturaOtrosAtributosList = new FacturaOtrosAtributosList();
+            vFacturaResumenTotalList = new FacturaResumenTotalList();
+
+
+
+            var fac = new Factura({ id: -1,
+                IdFactura: -1,
+                IdPuntoVenta: 2,
+                TipoComprobanteCodi: 6, // es el codigo- Campo codi de CmpteTipo
+                PrestaServicio: 0,
+                FacturaFechaEmision: convertToJSONDate("2015-04-08 00:00:00.000"),
+                FacturaNroComprobante: "-1",
+                CaeFechaVto: "",
+                Cae: "",
+                EmisorNombreFantasia: "Darth Vader",
+                EmisorRazonSocial: "Empresa de pruebas",
+                EmisorDomicilio: "Los andes 345",
+                EmisorCondicionIva: 0,
+                EmisorCuit: "20263376081",
+                EmisorIngresosBrutos: "20002456673",
+                EmisorFechaInicio: convertToJSONDate("2009-06-09 00:00:00.000"),
+                EmpresaLeyenda: "El cuit tiene que ser el que se envio al solicitar el certificado",
+                FacturaTipo: "B",
+                FacturaCodigo: "6",
+                ReceptorNroDocumento: "20263376081",
+                ReceptorTipoDocumento: "80",
+                ReceptorDescripcionDocumento: "CUIT",
+                ReceptorCondicionIva: "IVA RESPONSABLE INSCRITO",
+                ReceptorCondicionVenta: "Contado ",
+                ReceptorRazonSocial: "Razon Social Receptor",
+                ReceptorDomicilioComercial: "Balcarse 54",
+                ReceptorRemitoNro: "000000000000",
+                FechaDesde: convertToJSONDate("2015-04-08 00:00:00.000"),
+                FechaHasta: convertToJSONDate("2015-04-08 00:00:00.000"),
+                FechaVencimientoPago: convertToJSONDate("2015-04-08 00:00:00.000")
+            });
+
+
+
+
+            var facturaDetalle1 = new FacturaDetalle({
+                IdFacturaDatosOperacion: -1,
+                IdFactura: -1,
+                Codigo: "1",
+                ProductoServicio: "Product test 1",
+                Cantidad: 2,
+                UnidadMedida: "kilogramos",
+                PrecioUnidad: 2,
+                Bonificacion: 10,
+                BonificacionSubTotal: 3.6,
+                ImporteBonificado: 0.4,
+                AlicuotaIva: "21%",
+                ImporteIva: 0.756,
+                Subtotal: 4.356
+            });
+
+            var facturaDetalle2 = new FacturaDetalle({
+                IdFacturaDatosOperacion: -1,
+                IdFactura: -1,
+                Codigo: "2",
+                ProductoServicio: "Product test 2",
+                Cantidad: 5,
+                UnidadMedida: "litros",
+                PrecioUnidad: 10,
+                Bonificacion: 5,
+                BonificacionSubTotal: 47.5,
+                ImporteBonificado: 2.5,
+                AlicuotaIva: "Exento",
+                ImporteIva: 0,
+                Subtotal: 47.5
+            });
+
+
+            var vFacturaDetalleList = new FacturaDetalleList();
+            vFacturaDetalleList.add(facturaDetalle1);
+            vFacturaDetalleList.add(facturaDetalle2);
+
+
+            var jsonFac = fac.toJSON();
+            var strJsonFac = JSON.stringify(jsonFac);
+
+            
+
+            
+            
+
+            
+
+            var a = new wsfe();
+                a.ajaxSpin("#FacturaSave");
+                a.content("#FacturaSave");
+
+            $("#ObtenerCae").click(function () {
+                if (window.confirm("Desea guardar la factura?")) {
+                    a.FacturaSave(url + "/FacturaSave", { IdEmpresa: 7,
+                        factura: strJsonFac,
+                        detalle: "{ detalle: " + JSON.stringify(vFacturaDetalleList.toJSON()) + "}",
+                        otrosAtributos: "{ items: " + JSON.stringify(vFacturaOtrosAtributosList.toJSON()) + "}",
+                        resumenTotal: "{ items: " + JSON.stringify(vFacturaResumenTotalList.toJSON()) + "}"
+                    });
+                    
+                }
+          });
+
+
+        });
+    </script>
+ 
+  <style>
+  .PanelMessage
+      {line-height:1.5em;font-size:1em;
+       padding:0.3em;background-color:#eee;
+       border-bottom:solid 1px #dfdfdf;display:none;
+       
+       }
+  </style>
+</head>
+	<body> 
+ 
+	   <div id="MessagePanel" style="position:absolute;top:0;width:100%;"></div> 
+		<div id="Page" class="pagePanel">
+            <div id="PageMenu" class="pageMenu">
+                <a class="vItemMenu home" href="../../index.html"></a>
+                <a class="vItemMenu table" href="#"></a>
+                <a class="clear"></a>
+            </div>
+	        <div id="wrapper" class="pageContent" >
+                    <h2>Login</h2>
+	                <div id="LoginTest"></div>
+
+                    <h2>DatosOperacionResumenTotal</h2>
+                    <div id="FacturaSave" class="lineApp" style="color:Green"></div>
+                    <input id="ObtenerCae" type="submit" value="Obtener Cae"/>
+
+	                <div id="DatosOperacionResumenTotal"></div>		
+
+                    <h2>AtributosItemsGetAllByIdEmpresa</h2>
+	                <div id="AtributosItemsGetAllByIdEmpresa"></div>		
+
+
+                    <h2>EmpresaGetAll</h2>
+	                <div id="EmpresaGetAll"></div>		
+
+                    <h2>EmpresaPuntoVenta</h2>
+	                <div id="EmpresaPuntoVenta"></div>		
+                    
+
+                    <h2>CondicionVentaGetAll</h2>
+	                <div id="CondicionVentaGetAll"></div>		
+
+                    
+                    <h2>UnidadMedidaGetAll</h2>
+	                <div id="UnidadMedidaGetAll"></div>		
+                    
+
+                    <h2>ProvinciaGetAll</h2>
+	                <div id="ProvinciaGetAll"></div>		
+                    
+                    <h2>TipoDocumentoGetAll</h2>
+	                <div id="TipoDocumentoGetAll"></div>		
+                    
+
+                    <h2>CondicionIvaGetAll</h2>
+	                <div id="CondicionIvaGetAll"></div>		
+                    <h2>TipoComprobantesGetAll</h2>
+	                <div id="TipoComprobantesGetAll"></div>		
+                    <h2>ConceptosGetAll</h2>
+	                <div id="ConceptosGetAll"></div>		
+                    <h2>AlicuotaIvaGetAll</h2>
+	                <div id="AlicuotaIvaGetAll"></div>		
+                    
+	        </div>
+	        
+        </div>
+		
+		  <div id="OverPanel" class="pageOver">
+		        <h1 class="pageTitle">
+		            <span class="pageTitleContent">Titulo del panel</span>&nbsp;
+                    <span id="OverPanel_Menu"   class="pageMenuItem"></span>
+                    <span id="OverPanel_Close"  class="pageCloseItem"></span>
+                </h1>
+                <div id="OverPanel_MenuContent" class="panelMenu">Menu</div>
+                <div id="OverPanel_Content" class="pageOverContent"></div>
+        </div>
+        <div id="AjaxSpin" class="loading">
+            <h1>
+                <span id="AjaxAbort" class="pageCloseItem"></span>
+             </h1>
+        </div>
+			
+		  
+	</body>
+</html>

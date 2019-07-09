@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+ <meta charset="UTF-8">
+     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+     <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+ 	
+    <link rel="stylesheet"  href="../css/viupho.css" />
+    <link rel="stylesheet"  href="../css/buttons.css" />
+    <link rel="stylesheet"  href="../css/tables.css" />
+ 
+    <script src="../js/jquery-1.7.2.min.js"></script>
+    
+    <link href="../js/JQueryUI/themes/default/ui.all.css" rel="stylesheet" type="text/css" />
+    <link href="../js/JQueryUI/drag.css" rel="stylesheet" type="text/css" />
+    
+    <script src="../js/JQueryUI/ui/ui.core.js" type="text/javascript"></script>
+    <script src="../js/JQueryUI/ui/ui.draggable.js" type="text/javascript"></script>
+	
+	
+    
+    
+    <script src="js/backboneJS/underscore-min.js"></script>
+    <script src="js/backboneJS/backbone-min.js"></script>
+    <script src="pages/Panel.js"></script>
+    
+    <script src="../js/iscroll/iscroll-lite.js"></script>
+    
+    
+    
+  <script type="text/javascript">
+
+      var deviceWidth = 0;
+      $(window).bind('resize', function() {
+          resize();
+      }).trigger('resize');
+
+      $(window).on("navigate", function(event, data) {
+          var direction = data.state.direction;
+          if (direction == 'back') {
+              console.log("back()");
+          }
+          if (direction == 'forward') {
+              console.log("forward()");
+          }
+      });
+      
+      function resize() {
+          console.log("resize()", $(window).width(), $(window).height());
+          
+          
+      }
+      
+      $(document).ready(function() {
+       
+      });
+    </script>
+ 
+</head>
+
+<body>
+      <div id="Page" class="page">
+            <div id="PageMenu" class="pageMenu">
+                <a class="vItemMenu home" href="index.html"></a>
+                <a class="vItemMenu table"></a>
+                <a class="clear"></a>
+            </div>
+	        <div id="wrapper" class="pageContent" >
+                <div id="scroller">
+                    <div id="NewsPaperPanel"     class="content"></div>
+                    <div id="NewsPanel"     class="content" style="position:absolute;top:0;display:none;"></div>            
+                    
+                </div>
+                <div id="log"></div>
+	        </div>
+        </div>
+        
+        <div id="Loading">&nbsp;</div>
+
+    <script type="text/x-underscore-template" id="PanelTemplate">
+        <div id="<%=this.cid%>" class="page pageOver">
+            <div id="<%=this.cid%>_Content" class="pageContent">
+                <h1 class="pageTitle"><span class="pageTitleContent"><%= title %></span>&nbsp;
+                    <span id="<%=this.cid%>_Menu"  data-id="<%=this.cid%>"  class="pageMenuItem"></span>
+                    <span id="<%=this.cid%>_Close"  data-id="<%=this.cid%>"  class="pageCloseItem"></span>
+                </h1>
+                <div id="<%=this.cid%>_MenuContent" class="panelMenu"></div>
+            </div>
+            
+        </div>
+    </script> 
+
+    <script type="text/x-underscore-template" id="NewsPaperTemplate">
+            <div id="<%=ParentID%>_TemplateContentPanel" class="Swip">
+        	    <ul>
+                <%if (models.length==0){%> 
+                    <div class="LineMessage" >No se encontraron datos para la busqueda realizada.</div>
+                <% }; %>    
+                <%for (var i = 0, len =  models.length; i < len; i++){%> 
+                    <li class="item" style="height:48px;overflow-x: hidden;" data-Id="<%= models[i].get("IdNewsPaper")%>" data-cid="<%= models[i].cid %>">
+                        <span class="label"><b><%= models[i].get("Nombre")%></b></span> 
+                    </li>
+                <% }; %>    
+                </ul>
+            </div>        
+    </script> 
+    
+    <script type="text/x-underscore-template" id="NewsTemplate">
+            <div id="<%=ParentID%>_TemplateContentPanel" class="Swip">
+        	    <ul>
+                <%if (models.length==0){%> 
+                    <div class="LineMessage" >No se encontraron datos para la busqueda realizada.</div>
+                <% }; %>    
+                <%for (var i = 0, len =  models.length; i < len; i++){%> 
+                    <li class="item" style="height:60px;overflow-x: hidden;" data-Id="<%= models[i].get("IdNewsPaper")%>" data-cid="<%= models[i].cid %>">
+                    <p class="title"><a target="_blank" href="<%= models[i].get("Link")%>">
+                            <%= models[i].get("Title")%></a> <span><%= models[i].get("PublishDate")%><span></p>
+                        <p><%= models[i].get("Description")%></p>
+                    </li>
+                <% }; %>    
+                </ul>
+            </div>        
+    </script> 
+    
+  </body>
+</html>
+
+ 

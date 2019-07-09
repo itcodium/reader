@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+
+<head>
+	<title>Codigos de ejemplo</title>
+
+	<link rel="StyleSheet" href="tree/dtree.css" type="text/css" />
+	<script type="text/javascript" src="tree/dtree.js"></script>
+
+</head>
+
+<body>
+
+<h2>Ejemplos</h2>
+
+<div class="dtree">
+	<p><a href="javascript: d.openAll();">open all</a> | <a href="javascript: d.closeAll();">close all</a></p>
+	<script type="text/javascript">
+		<!--
+		d = new dTree('d');
+
+		d.add(0,-1,'Codigos de ejemplo');
+		d.add(1, 0, 'Template html en blanco', 'templates/empty_html/empty.html');
+		d.add(10, 0, 'Cargar luego de cargar la pagina', 'Ejemplos/LoadingImage.html');
+		d.add(2, 0, 'Panel', '');
+		d.add(3, 2, 'Panel Basico', 'templates/panel/1_panel.html');
+		d.add(4, 2, 'Panel Backbone View', 'templates/panel/2_panelBackbone.html');
+
+		d.add(5, 0, 'Paneles superpuestos', '');
+		d.add(6, 5, 'Panel Over', 'templates/panelOver/1_panelOverPanel.html');
+		d.add(7, 5, 'Panel recursivo', 'templates/panelOver/2_panelOverPanelMultiple.html');
+		d.add(8, 5, 'Panel contenido ajax', 'templates/panelOver/3_panelOverAjax.html');
+		d.add(9, 5, 'Panel contedido ajax a un panel', 'templates/panelOver/4_panelOverAjaxCaller.html');
+		d.add(10, 5, 'Panel ajax + Message error (backbone)', 'templates/panelOver/5_panelOverAjaxCallerMessage.html');
+		d.add(11, 5, 'Panel ajax + List (backbone)', 'templates/panelOver/6_panelBackBoneModelView.html');
+
+		d.add(12, 0, 'HTML5', '');
+		d.add(13, 12, 'Web SQL Create database.', 'templates/flickr/codes/1_WebSql.html');
+		d.add(14, 12, 'Web SQL Table ABM', 'templates/flickr/codes/2_WebSqlABM.html');
+		d.add(15, 12, 'IO', 'templates/flickr/codes/1_io_SaveFileFromUrl.html');
+		d.add(16, 12, 'Upload (Drag & Drop)', 'templates/Upload/1_Upload.html');
+
+		//d.add(15, 0, 'Flickr', '');
+		//d.add(16, 15, 'Authentication', 'templates/flickr/1_Authentication.html');
+		
+		// http: //localhost:1555/CodePanel/empty_html/empty.html
+		/*
+		d.add(2,0,'Node 2','example01.html');
+		d.add(3,1,'Node 1.1','example01.html');
+		d.add(4,0,'Node 3','example01.html');
+		d.add(5,3,'Node 1.1.1','example01.html');
+		d.add(6,5,'Node 1.1.1.1','example01.html');
+		d.add(7,0,'Node 4','example01.html');
+		d.add(8,1,'Node 1.2','example01.html');
+		d.add(9,0,'My Pictures','example01.html','Pictures I\'ve taken over the years','','','img/imgfolder.gif');
+		d.add(10,9,'The trip to Iceland','example01.html','Pictures of Gullfoss and Geysir');
+		d.add(11,9,'Mom\'s birthday','example01.html');
+		d.add(12, 0, 'Recycle Bin', 'example01.html', '', '', 'tree/img/trash.gif');
+		*/
+		document.write(d);
+		//-->
+    </script>
+</div>
+</body>
+</html>

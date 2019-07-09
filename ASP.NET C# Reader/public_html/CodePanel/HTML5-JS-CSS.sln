@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CodePanel", "..\CodePanel", "{559650FC-0227-4F88-9120-F68F76ACB91B}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "3.5"
+		Debug.AspNetCompiler.VirtualPath = "/CodePanel"
+		Debug.AspNetCompiler.PhysicalPath = "..\CodePanel\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\CodePanel\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/CodePanel"
+		Release.AspNetCompiler.PhysicalPath = "..\CodePanel\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\CodePanel\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "16927"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{559650FC-0227-4F88-9120-F68F76ACB91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{559650FC-0227-4F88-9120-F68F76ACB91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
